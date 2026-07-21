@@ -1,0 +1,77 @@
+#+TITLE: introducing tree-guide.el, plus other lisp editing tips
+
+GitHub repo: https://github.com/benvvalk/tree-guide.el
+
+* TODO Part 1: a quick demo of =tree-guide.el=
+- a local minor mode that decorates the buffer
+- all movement/editing commands work as usual
+- implemented using "overlays"
+  - see: "Bending Emacs: Episode 6: Overlays":
+    https://www.youtube.com/watch?v=93wWCroTKnM
+* TODO Part 2: build an Emacs config for lisp editing
+** TODO show preview of final config
+** TODO =aggressive-indent=: for automatic indentation (third party package)
+- manually fix indentation:
+  |-------+---------------|
+  | key   | function      |
+  |-------+---------------|
+  | C-M-\ | indent-region |
+  |-------+---------------|
+- =aggressive-indent-mode= is more reliable than built-in =electric-indent-mode=
+** TODO =tree-guide=: for visual guides (third party package)
+** TODO =show-paren=: for highlighting current expression (built-in package)
+- by default, =show-paren= just highlights the matching open/close paren
+- setting =show-paren-style= to =expression= is *way better*
+** TODO =lispy=: for structural navigation (third party package)
+- Emacs' built-in lisp navigation commands are a bit awkward:
+  |-------+------------------|
+  | key   | function         |
+  |-------+------------------|
+  | C-M-u | backward-up-list |
+  | C-M-d | down-list        |
+  | C-M-n | forward-list     |
+  | C-M-p | backward-list    |
+  |-------+------------------|
+- =lispy= navigation keys are *way better*:
+  |-----+-----------------+------------------------------------|
+  | key | function        | note                               |
+  |-----+-----------------+------------------------------------|
+  | h   | lispy-left      | move to beginning of parent        |
+  | f   | lispy-flow      | visit lists in order of evaluation |
+  | j   | lispy-down      | move to beginning of next sibling  |
+  | k   | lispy-up        | move to beginning of prev sibling  |
+  | b   | lispy-back      | backward in navigation history     |
+  | d   | lispy-different | jump to matching open/close paren  |
+  |-----+-----------------+------------------------------------|
+- =lispy= can do much more (i.e. structural editing commands)!
+  - for full list of lispy keybinds:
+    - do =M-x describe-mode= and search for "lispy"
+  - see =lispy= author's own demo videos:
+    - https://www.youtube.com/@abo5abo/videos
+  - see also: =paredit=, =symex= packages
+** TODO =hideshow-org=: for folding subtrees (third party package)
+- =hideshow-org= is a small wrapper around built-in =hideshow=
+- =hideshow='s default keybinds are insane:
+  |-----------+------------------|
+  | key       | command          |
+  |-----------+------------------|
+  | C-c @ C-e | hs-toggle-hiding |
+  |-----------+------------------|
+- =hideshow-org='s keybinds are much better:
+  |-------+---------------------|
+  | key   | command             |
+  |-------+---------------------|
+  | TAB   | hs-org/hideshow     |
+  | S-TAB | hs-org/hideshow-all |
+  |-------+---------------------|
+** TODO our config is now done!
+- completed =init.el= available at:
+  - https://github.com/benvvalk/tree-guide.el-video
+* TODO donate on GitHub Sponsors: https://github.com/sponsors/benvvalk
+- a small one-time donations are fine! (e.g. $5)
+- sponsor perks:
+  - vote on issues at: https://sponsoredissues.org/benvvalk
+  - early access to new =tree-guide.el= versions (i.e. "sponsorware")
+    - I learned about the "sponsorware" idea from a HackerNews post:
+      - "I Just Hit $100k/year On GitHub Sponsors": https://news.ycombinator.com/item?id=23613719
+
